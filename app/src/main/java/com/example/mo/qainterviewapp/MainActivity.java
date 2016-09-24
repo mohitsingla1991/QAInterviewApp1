@@ -1,5 +1,6 @@
 package com.example.mo.qainterviewapp;
 
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import static com.example.mo.qainterviewapp.R.id.Home;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,6 +46,9 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+
+
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -55,8 +62,21 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+       getMenuInflater().inflate(R.menu.main, menu);
+
+
+
+        final MenuItem homeMenu = menu.add("Home Page");
+        homeMenu.setIcon(R.mipmap.home_icon);
+        homeMenu.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        homeMenu.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Toast.makeText(MainActivity.this,"homeMenus",Toast.LENGTH_SHORT);
+                return true;
+            }
+        });
+       return true;
     }
 
     @Override
