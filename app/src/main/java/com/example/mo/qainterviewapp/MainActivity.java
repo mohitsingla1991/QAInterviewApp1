@@ -1,9 +1,13 @@
 package com.example.mo.qainterviewapp;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,13 +17,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import static com.example.mo.qainterviewapp.R.id.Home;
+import org.w3c.dom.Text;
+
+import static com.example.mo.qainterviewapp.R.id;//
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+    public static Button button_alert;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +74,7 @@ public class MainActivity extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
        getMenuInflater().inflate(R.menu.main, menu);
 
+        MainActivity.this.setTitle("Home Screen");
 
 
         final MenuItem homeMenu = menu.add("Home Page");
@@ -72,12 +83,21 @@ public class MainActivity extends AppCompatActivity
         homeMenu.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                Toast.makeText(MainActivity.this,"homeMenus",Toast.LENGTH_SHORT);
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);
+
+                Toast.makeText(MainActivity.this,"Home Page",Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
-       return true;
+
+        return true;
     }
+
+
+
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -85,7 +105,6 @@ public class MainActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
@@ -102,7 +121,13 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
-            MainActivity.this.setTitle("Import");
+            MainActivity.this.setTitle("QA Basic Questions");
+            QABasic_Fragment qaBasic_fragment = QABasic_Fragment.newInstance("ABC","XYZ");
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.Relative_layout_id,
+                    qaBasic_fragment,
+                    qaBasic_fragment.getTag()).commit();
+
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {

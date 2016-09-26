@@ -7,9 +7,20 @@
         android:title="@string/action_settings"
         app:showAsAction="never" />
 
+
     <item
-        android:id="@+id/Home"
-        android:icon="@mipmap/home_icon"
-        android:title="Home Page"
-        app:showAsAction="always" />
+        android:id="@+id/cancel_action"
+        android:title="Exit"
+
+        app:showAsAction="collapseActionView"
+         />
+
+
+
+    <!--// We can show Home Button by below way also-->
+    <!--<item-->
+        <!--android:id="@+id/Home"-->
+        <!--android:icon="@mipmap/home_icon"-->
+        <!--android:title="Home Page"-->
+        <!--app:showAsAction="always" />-->
 </menu>
