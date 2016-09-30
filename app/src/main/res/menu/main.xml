@@ -8,13 +8,21 @@
         app:showAsAction="never" />
 
 
+    <!--<item-->
+        <!--android:id="@+id/cancel_action"-->
+        <!--android:title="Exit"-->
+        <!--app:showAsAction="collapseActionView"-->
+         <!--/>-->
+
     <item
-        android:id="@+id/cancel_action"
-        android:title="Exit"
+        android:id="@+id/search"
+        android:showAsAction="always"
+        android:actionViewClass="android.widget.SearchView"
+        android:title="search" />
 
-        app:showAsAction="collapseActionView"
-         />
 
+        <!--android:title=""-->
+        <!--android:icon="@drawable/ic_search"-->
 
 
     <!--// We can show Home Button by below way also-->

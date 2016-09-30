@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.mo.qainterviewapp.QABasic_Fragment"
-    android:background="#fefcfc">
+    android:background="#fefcfc"
+    android:scrollbarAlwaysDrawHorizontalTrack="true"
+    android:scrollbarFadeDuration="10">
 
     <!-- TODO: Update blank fragment layout -->
     <!--<TextView-->
@@ -13,9 +15,10 @@
     <ExpandableListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/expandableListView"
-        android:layout_gravity="left|top"
+        android:id="@+id/expandableListViewqabasic"
+        android:layout_gravity="bottom"
         android:divider="#c33c3c"
-        android:childDivider="#f44646"
-        android:dividerHeight="0.55dp"/>
+        android:childDivider="@android:color/transparent"
+        android:dividerHeight="5dp"
+        android:state_activated="true"/>
 </RelativeLayout>

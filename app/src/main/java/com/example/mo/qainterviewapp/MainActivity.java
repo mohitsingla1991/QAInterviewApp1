@@ -1,5 +1,6 @@
 package com.example.mo.qainterviewapp;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
@@ -90,8 +91,22 @@ public class MainActivity extends AppCompatActivity
                 return true;
             }
         });
+        //For Exit
+        final MenuItem exitmenu = menu.add("Exit");
+        exitmenu.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                return true;
+            }
+
+        });
 
         return true;
+
     }
 
 
@@ -129,8 +144,17 @@ public class MainActivity extends AppCompatActivity
                     qaBasic_fragment.getTag()).commit();
 
         } else if (id == R.id.nav_gallery) {
+            MainActivity.this.setTitle("SQL");
+            SQL_Fragment sql_fragment = SQL_Fragment.newInstance("ABC","XYZ");
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.Relative_layout_id,
+                    sql_fragment,
+                    sql_fragment.getTag()).commit();
+
 
         } else if (id == R.id.nav_slideshow) {
+
+            MainActivity.this.setTitle("Automation");
 
         } else if (id == R.id.nav_manage) {
 

@@ -7,6 +7,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -51,6 +58,48 @@ public class QABasic_Fragment extends Fragment {
         return fragment;
     }
 
+
+    ExpandableListView expandableListView;
+    List<String> ques_list;
+    Map<String,String> ques_ans_map;
+    ExpandableListAdapter expandableListAdapter_qaBasic;
+
+
+
+    public void fillDataQABasic(){
+
+        ques_list = new ArrayList<>(); // Created an Object
+        ques_list.add("What is Quality Assurance?");
+        ques_list.add("What is Testing?");
+        ques_list.add("Why testing is Required?");
+        ques_list.add("Why does Software have defects?");
+        ques_list.add("How is testing related to Application Risk?");
+        ques_list.add("What are the Testing Principles?");
+        ques_list.add("What is Software Testing Life cycle?");
+        ques_list.add("What is Test case Development?");
+        ques_list.add("What is Test Environment Setup");
+        ques_list.add("What is Test Execution?");
+        ques_list.add("What is defect reporting?");
+        ques_list.add("What is Summary report & analysis?");
+        ques_list.add("Name few products for defect reporting?");
+        ques_list.add("What is functional testing?");
+        ques_list.add("What is non-functional testing?");
+        ques_list.add("Difference between Verification & Validation?");
+        ques_list.add("What is Latent Defect?");
+        ques_list.add("What is Masked Defect?");
+
+
+        ques_ans_map = new HashMap<>();
+        ques_ans_map.put(ques_list.get(0),"Ans1");
+        ques_ans_map.put(ques_list.get(1),"Ans2");
+        ques_ans_map.put(ques_list.get(2),"Ans3");
+
+    }
+
+
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,13 +107,31 @@ public class QABasic_Fragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
+
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        fillDataQABasic();
+
+       View view= inflater.inflate(R.layout.fragment_qabasic_, container, false);
+
+        expandableListView = (ExpandableListView)view.findViewById(R.id.expandableListViewqabasic);
+
+        expandableListAdapter_qaBasic = new QABasic_ExList_Adapter(ques_list, ques_ans_map, getContext()) ;
+
+        expandableListView.setAdapter(expandableListAdapter_qaBasic);
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_qabasic_, container, false);
+        return view;
+
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -72,7 +139,19 @@ public class QABasic_Fragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
+
+
+
     }
+
+
+
+
+
+
+
+
+
 
     @Override
     public void onAttach(Context context) {
